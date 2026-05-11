@@ -180,8 +180,28 @@ h1.hero-h em {
   font-weight: 500;
 }
 .funnel-sub em { font-style: italic; color: var(--primary); }
+
+.funnel-head {
+  display: grid;
+  grid-template-columns: 24px 1fr 44px 14px 44px 34px;
+  column-gap: 10px;
+  align-items: center;
+  padding: 0 12px 6px;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--muted);
+  border-bottom: 1px solid rgba(26,22,32,0.08);
+  margin-bottom: 8px;
+}
+.funnel-head .fh-before,
+.funnel-head .fh-after,
+.funnel-head .fh-lift { text-align: center; }
+.funnel-head .fh-lift { color: var(--primary); }
+
 .funnel-rows {
-  display: flex; flex-direction: column; gap: 6px;
+  display: flex; flex-direction: column; gap: 0;
 }
 .funnel-row {
   background: rgba(255,255,255,0.92);
@@ -189,12 +209,26 @@ h1.hero-h em {
   border-radius: 12px;
   padding: 9px 12px;
   display: grid;
-  grid-template-columns: 24px 1fr auto;
+  grid-template-columns: 24px 1fr 44px 14px 44px 34px;
   align-items: center;
   column-gap: 10px;
   box-shadow: var(--shadow-soft);
   font-size: 13px;
   position: relative;
+}
+.funnel-row + .funnel-row {
+  margin-top: 10px;
+}
+.funnel-row + .funnel-row::before {
+  content: "•  •  •";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(26,22,32,0.22);
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  line-height: 1;
 }
 .funnel-row .stage-num {
   width: 24px; height: 24px;
@@ -208,33 +242,41 @@ h1.hero-h em {
 }
 .funnel-row .stage { font-weight: 600; color: var(--text); font-size: 13px; }
 .funnel-row .stage span { color: var(--muted); font-weight: 400; }
-.funnel-row .vs {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+.funnel-row .before {
+  background: rgba(26, 22, 32, 0.07);
+  color: var(--muted);
+  padding: 4px 6px;
+  border-radius: 8px;
+  letter-spacing: -0.01em;
   font-variant-numeric: tabular-nums;
   font-weight: 700;
   font-size: 12px;
-  white-space: nowrap;
+  text-align: center;
 }
-.funnel-row .vs .before {
-  background: rgba(26, 22, 32, 0.07);
-  color: var(--muted);
-  padding: 4px 8px;
-  border-radius: 8px;
-  letter-spacing: -0.01em;
-}
-.funnel-row .vs .vs-arrow {
+.funnel-row .vs-arrow {
   color: var(--muted);
   font-weight: 400;
   font-size: 11px;
+  text-align: center;
 }
-.funnel-row .vs .after {
+.funnel-row .after {
   background: var(--primary);
   color: #fff;
-  padding: 4px 8px;
+  padding: 4px 6px;
   border-radius: 8px;
   box-shadow: 0 4px 10px -6px rgba(184,31,101,.55);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+}
+.funnel-row .lift {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
   letter-spacing: -0.01em;
 }
 .funnel-row.leak::after {
@@ -252,11 +294,11 @@ h1.hero-h em {
   font-weight: 700;
   box-shadow: 0 4px 10px -4px rgba(184,31,101,.55);
 }
-.funnel-row.r1 { width: 100%; }
-.funnel-row.r2 { width: 96%; align-self: center; }
-.funnel-row.r3 { width: 90%; align-self: center; }
-.funnel-row.r4 { width: 84%; align-self: center; }
-.funnel-row.r5 { width: 78%; align-self: center; }
+.funnel-row.r1,
+.funnel-row.r2,
+.funnel-row.r3,
+.funnel-row.r4,
+.funnel-row.r5 { width: 100%; }
 
 .funnel-kpi {
   margin-top: 14px;
@@ -306,9 +348,10 @@ h1.hero-h em {
 }
 .funnel-foot {
   font-size: 11px; color: var(--muted);
-  text-align: center; margin-top: 6px;
+  text-align: center; margin-top: 10px;
   line-height: 1.45;
 }
+.funnel-foot b { color: var(--text); font-weight: 700; }
 
 /* ============== SECTIONS ============== */
 .section { padding: 72px 0; }

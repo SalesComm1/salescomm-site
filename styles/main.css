@@ -48,6 +48,57 @@ a { color: inherit; }
 .skip-link:focus { left: 16px; top: 16px; }
 
 /* ==========================================================================
+   Text-us bar (top strip inviting people to text)
+   ========================================================================== */
+.text-bar {
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+.text-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.text-bar-eyebrow {
+  display: inline-block;
+  padding: 2px 10px;
+  background: rgba(255,255,255,.18);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.text-bar-msg {
+  color: #fff;
+  opacity: 0.96;
+}
+.text-bar-link {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(242, 193, 74, 0.55);
+  padding-bottom: 1px;
+  transition: color .15s ease, border-color .15s ease;
+}
+.text-bar-link:hover,
+.text-bar-link:focus {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+@media (max-width: 640px) {
+  .text-bar { padding: 10px 0; font-size: 13px; }
+  .text-bar-eyebrow { font-size: 11px; }
+}
+
+/* ==========================================================================
    Text-us CTA button (hero) + text-us item (booking meta)
    ========================================================================== */
 .btn-text-us {
